@@ -4,7 +4,10 @@ import React from "react";
 export default function JobCard() {
   return (
     <div className="max-w-2xl">
-      <div className="flex flex-col md:flex-row gap-2  justify-between p-3 border border-gray-300 rounded-md">
+      <div
+        className="flex flex-col md:flex-row gap-2  justify-between p-3 border border-gray-300 
+      rounded-md hover:bg-gray-100"
+      >
         <div className="flex flex-row items-center gap-4">
           <div className="">
             <img
@@ -35,7 +38,7 @@ export default function JobCard() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-1 justify-between items-center">
+        <div className="flex flex-col gap-1 justify-between items-end">
           <h3 className="text-md font-medium px-2 text-gray-500 bg-gray-200 rounded-sm border border-gray-300">
             Internship
           </h3>

@@ -10,10 +10,13 @@ export default function AllJobjsPage() {
           Explore Latest Jobs, Internships
         </h1>
         <div className="py-14">
-          <div className=""></div>
-          <div className="flex-1 md:flex-row flex-col ">
-            <JobCard />
-            <SearchCard />
+          <div className="max-3 flex flex-col md:flex-row gap-10 justify-around p-3">
+            <div className="">
+              <SearchCard />
+            </div>
+            <div className="md:w-2/3">
+              <JobCard />
+            </div>
           </div>
         </div>
       </div>
