@@ -18,9 +18,11 @@ export default function Header() {
           <button className="px-3 md:px-4 py-3 bg-green-600 text-white rounded-md text-sm font-semibold hover:bg-green-800 ">
             Hire Me
           </button>
-          <button className="px-3 md:px-4 py-3 bg-blue-600 text-white rounded-md text-sm font-semibold hover:bg-black">
-            Post a Job
-          </button>
+          <Link to="/post-Job">
+            <button className="px-3 md:px-4 py-3 bg-blue-600 text-white rounded-md text-sm font-semibold hover:bg-black">
+              Post a Job
+            </button>
+          </Link>
         </div>
       </div>
     </div>
