@@ -4,6 +4,7 @@ import SearchCard from "../components/SearchCard";
 import { Spinner } from "flowbite-react";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { serverURL } from "../utils/constant";
 
 export default function AllJobsPage() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function AllJobsPage() {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:5000/api/post/getPosts?page=${currentPage}&limit=${limit}`
+          `${serverURL}/api/post/getPosts?page=${currentPage}&limit=${limit}`
         );
         const data = await res.json();
         if (res.ok) {

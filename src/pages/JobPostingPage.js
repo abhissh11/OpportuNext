@@ -1,9 +1,40 @@
-import { Button, Label, Select, TextInput } from "flowbite-react";
-import React from "react";
+import { Alert, Button, Label, Select, TextInput } from "flowbite-react";
+import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router";
+import { serverURL } from "../utils/constant";
 
 export default function JobPostingPage() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [publishError, setPublishError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`${serverURL}/api/post/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+      }
+      if (res.ok) {
+        setPublishError(null);
+        navigate("/jobs");
+      }
+    } catch (error) {
+      setPublishError("Something went wrong!");
+      console.log(error);
+    }
+  };
+
   return (
     <div className="md:mx-36 mx-3 my-10 min-h-svh flex flex-col items-center">
       <div className="pb-10 flex flex-col gap-4 text-center items-center">
@@ -16,7 +47,7 @@ export default function JobPostingPage() {
       {/* form */}
 
       <div className="md:w-2/3 border-2 border-gray-400 p-4 rounded-xl border-dashed">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className=" flex flex-col gap-1">
             <h2 className="text-lg font-semibold">Job details</h2>
             <p className="text-md text-gray-600">
@@ -31,12 +62,21 @@ export default function JobPostingPage() {
                 required
                 id="title"
                 placeholder="e.g. Software developer"
+                onChange={(e) =>
+                  setFormData({ ...formData, title: e.target.value })
+                }
               />
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="JobType" value="Job Type" />
-              <Select id="jobType" required>
-                <option>Full-Time</option>
+              <Select
+                id="jobType"
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, jobType: e.target.value })
+                }
+              >
+                <option>Full-time</option>
                 <option>Part-time</option>
                 <option>Internship</option>
                 <option>Temporary</option>
@@ -51,12 +91,21 @@ export default function JobPostingPage() {
                 id="company"
                 required
                 placeholder="company name"
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="office-location" value="Office Location" />
-              <Select id="location" required>
+              <Select
+                id="location"
+                required
+                onChange={(e) =>
+                  setFormData({ ...formData, location: e.target.value })
+                }
+              >
                 <option>Bengaluru, Karnatka India</option>
                 <option>Hyederabad, Telangna, India</option>
                 <option>Pune, Maharashtra, India</option>
@@ -72,8 +121,12 @@ export default function JobPostingPage() {
               </Select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="location" value="Location" />
-              <Select>
+              <Label htmlFor="joblocation" value="Job Location" />
+              <Select
+                onChange={(e) =>
+                  setFormData({ ...formData, jobLocation: e.target.value })
+                }
+              >
                 <option>Remote</option>
                 <option>In-Office</option>
                 <option>Hybrid</option>
@@ -86,6 +139,9 @@ export default function JobPostingPage() {
                 id="website"
                 required
                 placeholder="Email or Website"
+                onChange={(e) =>
+                  setFormData({ ...formData, website: e.target.value })
+                }
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -94,6 +150,9 @@ export default function JobPostingPage() {
                 type="text"
                 id="salary"
                 placeholder="salary offerings"
+                onChange={(e) =>
+                  setFormData({ ...formData, salary: e.target.value })
+                }
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -103,6 +162,9 @@ export default function JobPostingPage() {
                 placeholder="Write about the Job Description."
                 className="h-32 mb-12"
                 required
+                onChange={(value) => {
+                  setFormData({ ...formData, description: value });
+                }}
               />
             </div>
             <div className="pt-2">
@@ -110,6 +172,11 @@ export default function JobPostingPage() {
                 Publish
               </Button>
             </div>
+            {publishError && (
+              <Alert color={"failure"} className="mt-5">
+                {publishError}
+              </Alert>
+            )}
           </div>
         </form>
       </div>
