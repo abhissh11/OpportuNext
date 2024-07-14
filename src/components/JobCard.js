@@ -4,7 +4,7 @@ import React from "react";
 export default function JobCard({ post }) {
   console.log(post);
 
-  const { title, company, jobType, salary, location } = post;
+  const { title, company, jobType, salary, location, jobLocation } = post;
   return (
     <div className="max-w-2xl">
       <div
@@ -26,7 +26,7 @@ export default function JobCard({ post }) {
             </div>
             <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
               <MapPin size={20} />
-              <p>{jobType}</p>
+              <p>{jobLocation}</p>
             </div>
             <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
               <Globe size={20} />

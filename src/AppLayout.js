@@ -1,5 +1,4 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router";
