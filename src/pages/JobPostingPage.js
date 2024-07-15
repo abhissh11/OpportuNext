@@ -76,6 +76,7 @@ export default function JobPostingPage() {
                   setFormData({ ...formData, jobType: e.target.value })
                 }
               >
+                <option>Job-Span</option>
                 <option>Full-time</option>
                 <option>Part-time</option>
                 <option>Internship</option>
@@ -99,26 +100,15 @@ export default function JobPostingPage() {
 
             <div className="flex flex-col gap-2">
               <Label htmlFor="office-location" value="Office Location" />
-              <Select
+              <TextInput
+                type="text"
                 id="location"
                 required
+                placeholder="Location"
                 onChange={(e) =>
-                  setFormData({ ...formData, location: e.target.value })
+                  setFormData({ ...formData, company: e.target.value })
                 }
-              >
-                <option>Bengaluru, Karnatka India</option>
-                <option>Hyederabad, Telangna, India</option>
-                <option>Pune, Maharashtra, India</option>
-                <option>Gurugram, Haryana, India</option>
-                <option>Delhi, India</option>
-                <option>Chandigarh, India</option>
-                <option>Noida, UP, India</option>
-                <option>Jaipur, Rajasthan, India</option>
-                <option>Mumbai, Maharashtra, India</option>
-                <option>Ahemdabad, Gujarat, India</option>
-                <option>Chennai, Tamil Nadu, India</option>
-                <option>NYC, USA</option>
-              </Select>
+              />
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="joblocation" value="Job Location" />
@@ -127,6 +117,7 @@ export default function JobPostingPage() {
                   setFormData({ ...formData, jobLocation: e.target.value })
                 }
               >
+                <option>Job Location</option>
                 <option>Remote</option>
                 <option>In-Office</option>
                 <option>Hybrid</option>
