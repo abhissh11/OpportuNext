@@ -12,7 +12,9 @@ export default function AllJobsPage() {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 5; // Number of posts per page
+  const limit = 8; // Number of posts per page
+
+  console.log(posts);
 
   useEffect(() => {
     const fetchPosts = async () => {
