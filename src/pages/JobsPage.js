@@ -51,43 +51,57 @@ export default function JobsPage() {
     website,
   } = post.items && post.items.length > 0 ? post.items[0] : {};
 
+  const date = new Date(createdAt);
+
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+
   return (
     <div className="my-20">
-      <div className="mx-3 md:mx-36">
-        <div className="flex flex-row gap-8 justify-between">
-          <div className="">
+      <div className="mx-5 md:mx-36">
+        <div className="flex flex-col md:flex-row gap-2 items-center md:items-start  justify-between">
+          <div className="flex flex-row gap-4 items-center ">
             <div className="">
-              <h1 className="text-2xl font-bold">{title}</h1>
-              <h2 className="text-xl font-bold text-blue-600">{company}</h2>
+              <img
+                src="https://static.thenounproject.com/png/1266207-200.png"
+                alt="devs."
+                className="h-32"
+              />
             </div>
-            <div className="py-2 flex flex-col gap-3">
-              <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
-                <Building2 size={20} />
-                <p>{jobType}</p>
+            <div className="flex flex-col gap-2">
+              <div className="">
+                <h1 className="text-2xl font-bold">{title}</h1>
+                <h2 className="text-xl font-bold text-blue-600">{company}</h2>
               </div>
-              <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
-                <MapPin size={20} />
-                <p>{jobLocation}</p>
-              </div>
-              <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
-                <Globe size={20} />
-                <p>{location}</p>
-              </div>
-              <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
-                <Banknote size={20} />
-                <p>₹{salary}</p>
+              <div className="py-2 flex flex-col gap-3">
+                <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
+                  <Building2 size={20} />
+                  <p>{jobType}</p>
+                </div>
+                <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
+                  <MapPin size={20} />
+                  <p>{jobLocation}</p>
+                </div>
+                <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
+                  <Globe size={20} />
+                  <p>{location}</p>
+                </div>
+                <div className="flex flex-row gap-1 text-sm font-medium text-gray-600">
+                  <Banknote size={20} />
+                  <p>₹{salary}</p>
+                </div>
               </div>
             </div>
           </div>
           <a href={website} target="_blank" rel="noopener noreferrer">
-            <h2 className="px-4 py-2 bg-black text-white text-md font-semibold rounded-md">
+            <h2 className="px-4 py-2 bg-black text-center max-w-32 text-white text-md font-semibold rounded-md">
               Apply Now
             </h2>
           </a>
         </div>
         <div className="my-10">
           <h1 className="text-md font-semibold">
-            Date Posted: <span>{createdAt}</span>
+            Date Posted: <span>{formattedDate}</span>
           </h1>
         </div>
         <div className="p-10 flex flex-col  items-center text-center justify-center gap-10">
@@ -102,7 +116,9 @@ export default function JobsPage() {
               <span className="text-gray-600 hover:underline">{website}</span>
             </h1>
           </a>
-          <p className="text-md font-semibold text-gray-800">{description}</p>
+          <p className="md:px-10 text-md font-semibold text-gray-800">
+            {description}
+          </p>
         </div>
       </div>
     </div>
