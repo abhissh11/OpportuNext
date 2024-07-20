@@ -12,7 +12,7 @@ export default function AllJobsPage() {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 8; // Number of posts per page
+  const limit = 5; // Number of posts per page
 
   console.log(posts);
 
@@ -58,9 +58,21 @@ export default function AllJobsPage() {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <Spinner size={"xl"} className="text-black" />
-      </div>
+      <>
+        <div className="mx-5 md:mx-36 p-5 bg-gray-300 rounded-lg flex items-center mt-10">
+          <h2 className="text-center text-black text-md font-bold">
+            The Backend is deployed on Render Free version. <br />{" "}
+            <span>
+              For first visitor on the website will take about 50 seconds to
+              activate the backend as per render guidelines for free version of
+              deployments.{" "}
+            </span>
+          </h2>
+        </div>
+        <div className="flex justify-center items-center min-h-screen">
+          <Spinner size={"xl"} className="text-black" />
+        </div>
+      </>
     );
 
   return (
