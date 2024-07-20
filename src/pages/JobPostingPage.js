@@ -106,7 +106,7 @@ export default function JobPostingPage() {
                 required
                 placeholder="Location"
                 onChange={(e) =>
-                  setFormData({ ...formData, company: e.target.value })
+                  setFormData({ ...formData, location: e.target.value })
                 }
               />
             </div>
