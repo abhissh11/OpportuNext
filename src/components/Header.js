@@ -15,9 +15,15 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex flex-row items-center gap-4">
-          <button className="px-3 md:px-4 py-3 bg-green-600 text-white rounded-md text-sm font-semibold hover:bg-green-800 ">
-            Hire Me
-          </button>
+          <a
+            href="https://drive.google.com/file/d/1Vl5u472CKk3SjJCsBQn-taOuSAmp3Wjf/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="px-3 md:px-4 py-3 bg-green-600 text-white rounded-md text-sm font-semibold hover:bg-green-800 ">
+              Hire Me
+            </button>
+          </a>
           <Link to="/post-Job">
             <button className="px-3 md:px-4 py-3 bg-blue-600 text-white rounded-md text-sm font-semibold hover:bg-black">
               Post a Job

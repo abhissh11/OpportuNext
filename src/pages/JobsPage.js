@@ -123,16 +123,14 @@ export default function JobsPage() {
             rel="noopener noreferrer"
             className="w-full "
           >
-            <h1 className="text-sm text-gray-800">
+            <h1 className="text-sm text-gray-800 overflow-clip">
               Website / Email :{" "}
-              <span className="text-gray-600 hover:underline">
+              <span className="text-gray-600 hover:underline ">
                 {post && website}
               </span>
             </h1>
           </a>
-          {/* <p className="md:px-10 text-md font-semibold text-gray-800">
-            {description}
-          </p> */}
+
           <div
             className="text-start post-desc"
             dangerouslySetInnerHTML={{ __html: description }}
