@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ql-editor{
+    font-size: 1.05rem;
+}
+.post-desc p{
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.post-desc h1{
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+}
+.post-desc h2{
+    font-weight: 400;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+}
+.post-desc a{
+    color: rgb(73, 129, 199);
+    text-decoration: none;
+}
+.post-desc a:hover{
+    text-decoration: underline;
+}

@@ -17,7 +17,7 @@ export default function JobsPage() {
         const res = await fetch(`${serverURL}/api/post/getPosts/${slug}`);
         const data = await res.json();
         if (data && data.items && data.items.length > 0) {
-          setPost(data);
+          setPost(data.items);
         } else {
           throw new Error("Post not found");
         }
@@ -30,7 +30,7 @@ export default function JobsPage() {
     };
     fetchPost();
   }, [slug]);
-  console.log(post);
+
   if (loading) {
     return (
       <>
@@ -61,7 +61,7 @@ export default function JobsPage() {
     createdAt,
     description,
     website,
-  } = post.items && post.items.length > 0 ? post.items[0] : {};
+  } = post && post.length > 0 ? post[0] : {};
 
   const date = new Date(createdAt);
 
@@ -125,12 +125,18 @@ export default function JobsPage() {
           >
             <h1 className="text-sm text-gray-800">
               Website / Email :{" "}
-              <span className="text-gray-600 hover:underline">{website}</span>
+              <span className="text-gray-600 hover:underline">
+                {post && website}
+              </span>
             </h1>
           </a>
-          <p className="md:px-10 text-md font-semibold text-gray-800">
+          {/* <p className="md:px-10 text-md font-semibold text-gray-800">
             {description}
-          </p>
+          </p> */}
+          <div
+            className="text-start post-desc"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></div>
         </div>
       </div>
     </div>
